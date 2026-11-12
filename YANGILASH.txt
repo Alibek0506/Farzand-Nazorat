@@ -1,0 +1,4 @@
+1) Bu zip ichidagi "FarzandNazorat" papkasini D:\ ga oching va barcha fayllarni almashtiring (Replace).
+2) Firebase Console > Firestore > Rules: firestore.rules mazmunini joylab Publish qiling.
+3) Android Studio: File > Sync Project with Gradle Files.
+4) parent ni Run qiling (yangi dizayn + logo). child ni ham qayta o'rnating (ikonkalar yuborish uchun).

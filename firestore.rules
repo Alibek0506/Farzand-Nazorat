@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore { match /databases/{d}/documents {
+  match /pairCodes/{c} { allow read, create: if request.auth != null; }
+  match /children/{id} {
+    allow create: if request.auth.uid == id;
+    allow read, update: if request.auth.uid == id || resource.data.parentUid == request.auth.uid;
+    match /icons/{p} {
+      allow create, update: if request.auth.uid == id;
+      allow read: if get(/databases/$(d)/documents/children/$(id)).data.parentUid == request.auth.uid;
+    }
+    match /locations/{l} {
+      allow create: if request.auth.uid == id;
+      allow read: if get(/databases/$(d)/documents/children/$(id)).data.parentUid == request.auth.uid;
+    }
+  }
+}}
